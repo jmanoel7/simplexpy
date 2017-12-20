@@ -19,7 +19,7 @@ RUN apt-get install -y --no-install-recommends \
 	python2.7 python2.7-minimal \
 	python-pip python-setuptools \
 	python-ipython python-ipython-doc python-ipython-genutils \
-	python-flask
+	python-flask \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /var/cache/apt/archives/*
