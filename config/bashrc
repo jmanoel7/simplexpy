@@ -1,0 +1,25 @@
+# PYTHON 2.7.14 VIA PYENV
+export PYENV_ROOT="/opt/pyenv"
+if [ -d "${PYENV_ROOT}/bin" ]; then
+	export PATH="${PYENV_ROOT}/bin:${PATH}"
+	if [ -x "/opt/pyenv/versions/2.7.14/bin/python" ]; then
+		export PYENV_VERSION="2.7.14"
+    fi
+	if command -v pyenv 1>/dev/null 2>&1; then
+	    eval "$(pyenv init -)"
+	fi
+	if [ "${PYENV_VERSION}" = "2.7.14" ]; then
+		export PYTHON="${PYENV_ROOT}/versions/${PYENV_VERSION}/bin/python"
+		export PYTHONDOCS="${PYENV_ROOT}/versions/${PYENV_VERSION}/share/doc"
+		[[ ! -d "${PYTHONDOCS}" ]] && \
+			mkdir -p "${PYTHONDOCS}"
+		if [ -r "${PYENV_ROOT}/versions/${PYENV_VERSION}/bin/virtualenvwrapper.sh" ]; then
+			export WORKON_HOME="/opt/venvs"
+			[[ ! -d "${WORKON_HOME}" ]] && \
+				mkdir -p "${WORKON_HOME}"
+			export VIRTUALENVWRAPPER_PYTHON="${PYTHON}"
+			export VIRTUALENVWRAPPER_SCRIPT="${PYENV_ROOT}/versions/${PYENV_VERSION}/bin/virtualenvwrapper.sh"
+			source "${VIRTUALENVWRAPPER_SCRIPT}"
+		fi
+	fi
+fi

@@ -1,0 +1,5 @@
+docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix jmanoel7ifg/sistec-download
+docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix jmanoel7ifg/sistec-download
+docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix jmanoel7ifg/sistec-download /bin/bash
+docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix jmanoel7ifg/sistec-download firefox-esr
+docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix jmanoel7ifg/sistec-download python ./sistec_download.py
