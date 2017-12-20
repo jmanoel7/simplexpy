@@ -1,2 +1,2 @@
 #!/bin/sh -e
-cat ./Dockerfile.exec | exec docker build -t sistec-download -
+exec docker build -t simplexpy .

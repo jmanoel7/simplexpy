@@ -13,26 +13,28 @@ RUN echo 'deb http://sft.if.usp.br/debian/ stretch main' > /etc/apt/sources.list
     && localedef -i pt_BR -c -f UTF-8 -A /usr/share/locale/locale.alias pt_BR.UTF-8
 ENV LANG pt_BR.UTF-8
 
-# adiciona os pacotes necessarios para testes basicos com ipython2
-RUN apt-get install -y \
-	bash-completion vim-nox vim-doc git git-doc git-buildpackage \
-	make gcc g++ gdb build-essential fakeroot \
-	python2.7 python2.7-dev python2.7-doc python2.7-examples \
-	python2.7-minimal python2.7-dbg \
+# adiciona os pacotes necessarios para a execucao do simplexpy
+RUN apt-get install -y --no-install-recommends \
+	bash-completion vim-nox mc \
+	python2.7 python2.7-minimal \
 	python-pip python-setuptools \
 	python-ipython python-ipython-doc python-ipython-genutils \
-	python-flask.*$
+	python-flask
     && apt-get clean \
-    && apt-get install -f
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/cache/apt/archives/*
 
 # configura o ambiente
-ENV HOME /root
 ENV SHELL /bin/bash
+ENV HOME /root
 USER root
-WORKDIR /root
+RUN mkdir -p /opt/simplexpy/
+WORKDIR /opt/simplexpy/
+EXPOSE 80
+ENV FLASK_APP simplex.py
 
-# executa o shell
-CMD /bin/bash
+# adiciona arquivos do simplexpy
+ADD ../app/ /opt/simplexpy/
 
-# executa o ipython2
-#CMD ipython2
+# executa o simplexpy
+CMD flask run --host 0.0.0.0 --port 80
