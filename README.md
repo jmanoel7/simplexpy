@@ -4,11 +4,15 @@
 
 `git clone https://github.com/jmanoel7/simplexpy.git SimplexPy`
 
+`cd SimplexPy`
+
+### construir
+
+`./build.sh`
+
 ### executar
 
-`cd SimplexPy/app`
-
-`./simplex.py`
+`./run.sh`
 
 ### acessar via browser
 

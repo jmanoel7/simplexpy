@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Otimização{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block h1 %}Otimização{% endblock %}
+{% block content %}
+    {{ super() }}
+        <form method="post">
+            <p><input type="radio" name="otimizacao" value="maximizar" checked>Maximizar</p>
+            <p><input type="radio" name="otimizacao" value="minimizar">Minimizar</p>
+            <p><input type="submit" value="Próximo"></p>
+        </form>
+{% endblock %}
