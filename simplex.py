@@ -41,12 +41,12 @@ class Simplex:
 	def solucao(self):
 		while True:
 			sbf = {}
-			vb = 
-			vnb = 
+			vb = []
+			vnb = []
 			for i in range(0, self.__vars_decisao):
 				item = {vnb[i]: 0}
 				sbf.update(item)
-			for i in range(1, len(self.__tabela):
+			for i in range(1, len(self.__tabela)):
 				item = {vb[i]: tabela[i][-2]}
 				sbf.update(item)
 			if solucao_otima:

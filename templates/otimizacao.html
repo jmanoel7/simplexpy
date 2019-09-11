@@ -7,8 +7,8 @@
 {% block content %}
     {{ super() }}
         <form method="post">
-            <p><input type="radio" name="otimizacao" value="maximizar" checked>Maximizar</p>
-            <p><input type="radio" name="otimizacao" value="minimizar">Minimizar</p>
+            <p><input type="radio" name="otimizacao" value="max" checked>Maximizar</p>
+            <p><input type="radio" name="otimizacao" value="min">Minimizar</p>
             <p><input type="submit" value="Próximo"></p>
         </form>
 {% endblock %}

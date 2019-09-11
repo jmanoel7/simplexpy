@@ -1,8 +1,12 @@
 {% extends "base.html" %}
-{% block title %}Variáveis de Decisão{% endblock %}
+{% block title %}Quantidade de Variáveis de Decisão{% endblock %}
 {% block head %}
     {{ super() }}
+{% block h1 %}Quantidade de Variáveis de Decisão{% endblock %}
 {% endblock %}
 {% block content %}
     {{ super() }}
+	<form method="post">
+            <input type="number" name="vars_decisao" value="2">
+	</form>
 {% endblock %}
