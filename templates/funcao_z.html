@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Função Z{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block h1 %}Função Z{% endblock %}
+{% block content %}
+    {{ super() }}
+	<form method="post">
+            <p>
+            Z =
+            {% for i in vars_decisao %}
+                <input type="text" name="funcao_z_{{ i }}" value="1">X{{ i }} {% if loop.nextitem is defined %}+{% endif %}
+            {% endfor %}
+            </p>
+            <p><input type="submit" value="Próximo"></p>
+	</form>
+{% endblock %}

@@ -30,10 +30,10 @@ class Simplex:
 		self.__tabela = tabela
 
 	def __repr__(self):
-		return ("SimplexPy(otimizar={0}, tabela={1})".format(self.__otimizar, self.__tabela))
+		return ("Simplex(otimizar={0}, vars_decisao={1}, tabela={2})".format(self.__otimizar, self.__vars_decisao, self.__tabela))
 
 	def __str__(self):
-		return "({0}, {1})".format(self.__otimizar, self.__tabela)
+		return "({0}, {1}, {2})".format(self.__otimizar, self.__vars_decisao, self.__tabela)
 
 	def forma_padrao(self):
 		pass
