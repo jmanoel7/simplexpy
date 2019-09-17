@@ -54,3 +54,31 @@ def qtde_restricoes():
         # print (sp)
         return redirect(url_for('restricoes'))
     return render_template('qtde_restricoes.html')
+
+@app.route('/restricoes', methods=['GET', 'POST'])
+def restricoes():
+    if request.method == 'POST':
+        try:
+            for i in range(len(sp.tabela) - 1):
+                for j in range(sp.vars_decisao + 1):
+                    sp.tabela[i+1].append(float(request.form['restricao_'+str(i)+str(j)]))
+        except ValueError:
+            return render_template('restricoes.html', vars=range(sp.vars_decisao + 1), restricoes=range(len(sp.tabela) - 1))
+        for i in range(len(sp.tabela) - 1):
+            # Maior ou Igual
+            if request.form['equacao_'+str(i)] == '1':
+                for j in range(len(sp.tabela)):
+                    if j == i + 1:
+                        sp.tabela[j].insert(-1, -1.0)
+                    else:
+                        sp.tabela[j].insert(-1, 0.0)
+            # Menor ou Igual
+            elif request.form['equacao_'+str(i)] == '2':
+                for j in range(len(sp.tabela)):
+                    if j == i + 1:
+                        sp.tabela[j].insert(-1, +1.0)
+                    else:
+                        sp.tabela[j].insert(-1, 0.0)
+        print (sp)
+        return redirect(url_for('solucao'))
+    return render_template('restricoes.html', vars=range(sp.vars_decisao + 1), restricoes=range(len(sp.tabela) - 1))
