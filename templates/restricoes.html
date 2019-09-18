@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Restrições{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block h1 %}Restrições{% endblock %}
+{% block content %}
+    {{ super() }}
+	<form method="post">
+            {% for restricao in restricoes %}
+                <p>
+            	{% for var in vars %}
+			<input type="text" name="restricao_{{ restricao }}{{ var }}" value="1">
+			{% if not loop.last %} X{{ var }} {% endif %}
+			{% if loop.revindex0 > 1 %}
+				+
+			{% else %}
+				{% if loop.revindex0 == 1 %}
+				<select name="equacao_{{ restricao }}">
+				  <option value="0">=</option>
+				  <option value="1">&gt;=</option>
+				  <option value="2">&lt;=</option>
+				</select>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	        </p>
+            {% endfor %}
+            <p><input type="submit" value="Próximo"></p>
+	</form>
+{% endblock %}

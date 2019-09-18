@@ -68,14 +68,18 @@ def restricoes():
             # Maior ou Igual
             if request.form['equacao_'+str(i)] == '1':
                 for j in range(len(sp.tabela)):
-                    if j == i + 1:
+                    if j == 0:
+                        sp.tabela[j].append(0.0)
+                    elif j == i + 1:
                         sp.tabela[j].insert(-1, -1.0)
                     else:
                         sp.tabela[j].insert(-1, 0.0)
             # Menor ou Igual
             elif request.form['equacao_'+str(i)] == '2':
                 for j in range(len(sp.tabela)):
-                    if j == i + 1:
+                    if j == 0:
+                        sp.tabela[j].append(0.0)
+                    elif j == i + 1:
                         sp.tabela[j].insert(-1, +1.0)
                     else:
                         sp.tabela[j].insert(-1, 0.0)
