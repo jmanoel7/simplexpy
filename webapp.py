@@ -83,6 +83,15 @@ def restricoes():
                         sp.tabela[j].insert(-1, +1.0)
                     else:
                         sp.tabela[j].insert(-1, 0.0)
+        sp.tabela[0].append(0.0)
+        for i in range(len(sp.tabela) - 1):
+            sp.tabela[i+1].insert(0, 0.0)
         print (sp)
         return redirect(url_for('solucao'))
     return render_template('restricoes.html', vars=range(sp.vars_decisao + 1), restricoes=range(len(sp.tabela) - 1))
+
+@app.route('/solucao')
+def solucao():
+    return render_template('solucao.html', vars=sp.solucao())
+
+
